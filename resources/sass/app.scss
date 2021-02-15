@@ -1,0 +1,15 @@
+@import 'variables';
+
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+@import '~sweetalert2/src/sweetalert2';
+
+@import 'custom/common.scss';
+@import 'custom/todo-theme.scss';
+@import 'elements/sidebar';
+@import 'elements/app-navigator';
+@import 'elements/app-footer';
+@import 'elements/card';
+@import 'elements/buttons';
+@import 'elements/transitions';
+@import 'elements/login';

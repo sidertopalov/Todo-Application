@@ -1,0 +1,81 @@
+.wizzard-steps-container {
+  margin-bottom: 50px;
+}
+
+.wizzard-steps-step {
+  font-size: 24px;
+  position: relative;
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  a {
+    width: 50px;
+    height: 50px;
+    background: $primary;
+    border-radius: 25px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background: $secondary;
+    left: 50px;
+  }
+
+  span {
+    font-size: 50%;
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    color: $black;
+    display: flex;
+  }
+
+  &.empty {
+    a {
+      color: $black;
+      background: $secondary;
+      opacity: 0.5;
+    }
+  }
+
+  &.selected {
+    a {
+      color: $white;
+      background: $wiz-dark-color;
+      opacity: 1;
+      box-shadow: 0 0 0 0.2rem rgba($wiz-box-shadow, 0.5);
+    }
+  }
+
+  &.error {
+    a {
+      box-shadow: 0 0 0 0.2rem rgba($error-red, 0.5);
+      border: 1px solid $error-red;
+    }
+  }
+
+  &:hover {
+    a {
+      color: $white;
+      background: $wiz-light-color;
+    }
+  }
+}
+
+.wizzard-steps-step:last-of-type {
+  margin: 0;
+
+  &::after {
+    display: none;
+  }
+}

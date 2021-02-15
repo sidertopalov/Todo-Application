@@ -1,0 +1,25 @@
+import Vue from 'vue'
+import store from '~/store'
+import router from '~/router'
+import i18n from '~/plugins/i18n'
+import App from '~/components/App'
+
+import '~/plugins'
+import '~/components'
+
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import Errors from './mixins/errors'
+import Helpers from './mixins/helpers'
+import Toast from './mixins/toast'
+
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+new Vue({
+  i18n,
+  store,
+  router,
+  ...App
+})

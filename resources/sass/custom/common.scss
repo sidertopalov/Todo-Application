@@ -1,0 +1,124 @@
+.main-wrapper {
+  width: 100%;
+  max-width: calc(100% - 60px);
+  padding-right: 80px;
+  padding-left: 80px;
+  margin-top: 1.5rem;
+
+  @media screen and (max-width: 720px) {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.main-layout {
+  padding-bottom: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+
+  @media screen and (max-width: 620px) {
+    margin-left: unset;
+  }
+}
+
+.show-mobile,
+.show-mobile.display-inline-flex {
+  display: none;
+}
+
+html {
+  overflow: overlay;
+  position: relative;
+  min-height: 100%;
+}
+
+// margin
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.mb-70 {
+  margin-bottom: 70px;
+}
+
+// padding
+.pt-20 {
+  padding-top: 20px;
+}
+
+// width
+
+.w-250p {
+  width: 250px;
+}
+
+.w-330p {
+  width: 330px;
+}
+
+// colors
+.c-white {
+  color: $white;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+
+.table-selected-item-background-color{
+  background-color: $lighter2-blue-todo !important
+}
+
+.font-size-larger {
+  font-size: larger;
+}
+
+
+.bg-primary {
+  background-color: $primary !important;
+}
+// Todo branding - change links color
+a {
+  color: $lighter-blue-todo;
+}
+
+.btn-outline-primary {
+  color: $primary !important;
+  &:hover {
+    background-color: darken($primary, 5%) !important;
+    color: $white !important;
+  }
+}
+
+.create-category-input {
+ flex: 0 0 91%;
+}
+.input-flex-side-91 {
+  flex: 0 0 91%;
+}
+
+@-webkit-keyframes run {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+
+@media screen and (max-width: 620px) {
+  .show-dekstop {
+    display: none;
+  }
+  .show-mobile {
+    display: block;
+  }
+  .show-mobile.display-inline-flex {
+    display: inline-flex;
+  }
+}
