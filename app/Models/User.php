@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
+use Modules\Tasks\Entities\Task;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
@@ -125,5 +126,10 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
             'email' => 'required|email:filter|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ], $merge);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
 }

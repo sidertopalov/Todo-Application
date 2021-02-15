@@ -5,6 +5,8 @@ namespace Modules\Users\Services;
 
 use App\Http\Resources\GeneralResponse;
 use App\Http\Resources\GeneralSingleResourceResponse;
+use App\Http\Resources\GeneralSmartDataListingResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Modules\Users\Repositories\Contracts\UserRepositoryContract;
 
@@ -16,6 +18,17 @@ class UserService
         UserRepositoryContract $userRepository
     ) {
         $this->userRepository = $userRepository;
+    }
+
+    public function getLoggedInUser()
+    {
+        try {
+            $user = $this->userRepository->getLoggedInUser(Auth::user()->id);
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+
+        return (new GeneralSingleResourceResponse($user))->withCode(200);
     }
 
     public function create($data)
@@ -40,7 +53,6 @@ class UserService
 
         try {
             $user = $this->userRepository->create($data);
-            // $this->syncRoles($user, $data);
         } catch (\Throwable $e) {
             throw $e;
         }

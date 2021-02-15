@@ -90,7 +90,7 @@ export default {
         this.mustVerifyEmail = true
       } else {
         // Log in the user.
-        const { data: { token } } = await this.form.post('/api/v1/login')
+        const { data: { token } } = await this.form.post('/api/v1/security/login')
         // Save the token.
         this.$store.dispatch('auth/saveToken', { token })
         // Update the user.

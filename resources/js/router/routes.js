@@ -23,6 +23,12 @@ let routes = [
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ]
   },
+
+  // Tasks
+  { path: '/tasks', name: 'tasks.index', component: page('tasks/index') },
+  { path: '/tasks/create', name: 'tasks.create', component: page('tasks/create') },
+  { path: '/tasks/:id/edit', name: 'tasks.edit', component: page('tasks/edit') },
+
 ];
 
 /**

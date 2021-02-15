@@ -9,6 +9,12 @@ use Modules\Users\Repositories\Contracts\UserRepositoryContract;
 
 class UserRepository extends UserRepositoryContract
 {
+
+    public function getLoggedInUser(int $id)
+    {
+        return User::findOrFail($id);
+    }
+
     public function create(array $data)
     {
         $data['password'] = User::hashPassword($data['password']);

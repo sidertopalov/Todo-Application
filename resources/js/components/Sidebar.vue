@@ -38,21 +38,21 @@
       </li>
 
       <li class="mb-1" v-if="authenticated">
-        <router-link :to="{ name: 'tasks.add' }" v-on:click.native="toggleSidebar(false)">
+        <router-link :to="{ name: 'tasks.create' }" v-on:click.native="toggleSidebar(false)">
           <fa icon="plus-circle" class="fa-2x sidebar-icon py-2" />
-          <span class="sidebar-text">{{ $t("tasks.add") }}</span>
+          <span class="sidebar-text">{{ $t("tasks.create") }}</span>
         </router-link>
       </li>
 
       <li class="mb-1" v-if="authenticated">
         <router-link :to="{ name: 'tasks.index' }" v-on:click.native="toggleSidebar(false)">
           <fa icon="clipboard-list" class="fa-2x sidebar-icon py-2" />
-          <span class="sidebar-text">{{ $t("tasks.todo") }}</span>
+          <span class="sidebar-text">{{ $t("tasks.all") }}</span>
         </router-link>
       </li>
 
       <li class="mb-1" v-if="authenticated">
-        <router-link :to="{ name: 'tasks.completed' }" v-on:click.native="toggleSidebar(false)">
+        <router-link :to="{ name: 'tasks.index' }" v-on:click.native="toggleSidebar(false)">
           <fa icon="clipboard-check" class="fa-2x sidebar-icon py-2" />
           <span class="sidebar-text">{{ $t("tasks.completed") }}</span>
         </router-link>

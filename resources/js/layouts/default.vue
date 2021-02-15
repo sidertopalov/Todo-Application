@@ -1,32 +1,15 @@
 <template>
   <div class="main-layout">
 
-    <div class="show-mobile">
+    <div>
       <b-nav class="app-navigator box-shadow justify-content-between">
         <b-nav-item @click="toggleSidebar(true)">
-          <fa class="fa-2x sidebar-icon py-2" icon="bars"  />
+          <fa class="show-mobile fa-2x sidebar-icon py-2" icon="bars"  />
         </b-nav-item>
 
-        <!-- <div class="d-flex"> -->
-          <!-- <template v-if="authenticated">
-            <b-nav-item>
-              <router-link :to="{ name: 'home' }">
-                {{ $t('home') }}
-              </router-link>
-            </b-nav-item>
-          </template>
-          <template v-else>
-            <b-nav-item>
-              <router-link :to="{ name: 'login' }">
-                {{ $t('login') }}
-              </router-link>
-            </b-nav-item>
-            <b-nav-item>
-              <router-link :to="{ name: 'register' }">
-                {{ $t('register') }}
-              </router-link>
-            </b-nav-item>
-          </template> -->
+        <b-nav-item v-if="authenticated">
+          	{{ $t("hello_with_comma") }} {{ user.name }}
+        </b-nav-item>
 
           <!-- <b-nav-item>
             <locales type="navbar"></locales>
@@ -64,7 +47,8 @@ export default {
   },
 
   computed: mapGetters({
-    authenticated: 'auth/check'
+    authenticated: 'auth/check',
+    user: 'auth/user'
   }),
   methods: {
     showSidebar() {

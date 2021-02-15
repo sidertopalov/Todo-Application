@@ -54,9 +54,11 @@
     "password": "Password"
   },
   "tasks": {
+    "create": "Create Task",
     "add": "Add Task",
     "list": "List Tasks",
     "todo": "Todo Tasks",
+    "all": "All Tasks",
     "completed": "Completed Tasks"
   }
 }

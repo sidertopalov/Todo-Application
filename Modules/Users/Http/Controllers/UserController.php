@@ -24,16 +24,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Renderable
-     */
-    public function index()
-    {
-
-    }
-
-    /**
      * Get authenticated user.
      *
      * @param  \Illuminate\Http\Request $request
@@ -41,16 +31,13 @@ class UserController extends Controller
      */
     public function current(Request $request)
     {
-        return response()->json($request->user());
-    }
+        $statusCode = 200;
+        $usersResponse = $this->userService->getLoggedInUser();
+        if (!empty($usersResponse->code)) {
+            $statusCode = $usersResponse->code;
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-
+        return $usersResponse->response()->setStatusCode($statusCode);
     }
 
     /**

@@ -1,5 +1,6 @@
 {
     "Web": true,
     "Security": true,
-    "Users": true
+    "Users": true,
+    "Tasks": true
 }
