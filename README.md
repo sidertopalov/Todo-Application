@@ -1,3 +1,4 @@
+# TODO Application SPA with Laravel and Vue
 # Requirements:
 PHP ^7.3|^8.0
 
@@ -8,15 +9,16 @@ PHP ^7.3|^8.0
 4. Run "php artisan key:generate"
 5. Run "php artisan jwt:secret"
 6. Run "npm install"
-7. Change the following in your .env file:
 
-- MySQL
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel #YOUR DATABASE NAME
-DB_USERNAME=root    #YOUR MySQL USERNAME
-DB_PASSWORD=        #YOUR MySQL PASS
+# MySQL setup
+Change the following in your .env file:
+
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=      #YOUR DATABASE NAME
+- DB_USERNAME=      #YOUR MySQL USERNAME
+- DB_PASSWORD=      #YOUR MySQL PASS
 
 # To your local database
 8. Run "composer dump-autoload"
