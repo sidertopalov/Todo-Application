@@ -36,6 +36,22 @@ class TaskRepository extends TaskRepositoryContract
         return Task::with('status')->find($task->id);
     }
 
+    public function update($taskId, array $data)
+    {
+        $task = Task::findOrFail($taskId);
+        $task->update($data);
+
+        return Task::with('status')->find($task->id);
+    }
+
+    public function delete($taskId)
+    {
+        $task = Task::findOrFail($taskId);
+        $task->delete();
+
+        return $task;
+    }
+
     public function rules(array $merge = [], $id = null)
     {
         return Task::rules($merge, $id);

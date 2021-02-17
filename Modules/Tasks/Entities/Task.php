@@ -24,7 +24,7 @@ class Task extends Model
 
     public static function rules($merge = [], $id = null) {
         return array_merge([
-            'description' => 'required',
+            'description' => 'required|min:2|max:255',
             'user_id' => 'required|exists:users,id',
             'status_id' => 'optional|exists:task_statuses,id',
         ], $merge);

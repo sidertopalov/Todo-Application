@@ -26,6 +26,7 @@
             <todo
               v-for="task in tasks"
               :key="task.id"
+              :id="task.id"
               :description="task.description"
               :completed="(task.status_id != 1)"
               @on-toggle="toggleTodo(task)"
@@ -71,12 +72,10 @@ export default {
     }
   },
 
-  created() {
-
-  },
-
   data: () => ({
     isFetchingFromDb: false,
+    currentDescription: null,
+    currentStatusId: null,
     resultsPerPages: 5,
     tasks: []
   }),
@@ -86,42 +85,102 @@ export default {
       return task.status.id == 1 ? false : true;
     },
     addTodo(newTask) {
+      this.$refs['smartDataListing'].allResultsCount++;
       // Update result only if the user is on the first page
       if(this.$refs.smartDataListing.currentPage == 1) {
         this.tasks.unshift(newTask);
-        console.log(newTask, this.tasks);
 
         if(this.tasks.length > this.resultsPerPages) {
           this.tasks.pop();
         }
       }
     },
-    toggleTodo(task) {
-      task.status_id = task.status_id == 1 ? 2 : 1;
-    },
     deleteTodo(deletedTask) {
-      this.tasks = this.tasks.filter(task => task !== deletedTask);
+
+      this.isFetchingFromDb = true;
+      axios
+        .delete('/api/v1/tasks/tasks/'+deletedTask.id)
+        .then(response => {
+          let data = response.data.data;
+          console.log(data);
+          this.$refs['smartDataListing'].ajaxUpdateResults();
+
+          this.isFetchingFromDb = false;
+
+          this.createSuccessToast(
+            this.$t("tasks.todo_delete_success"),
+            this.$t("success")
+          );
+
+        }).catch(error => {
+          this.isFetchingFromDb = false;
+          console.log(error);
+          this.createErrorToast(
+            this.$t("tasks.todo_delete_failed"),
+            this.$t("warning")
+          );
+        });
+    },
+    toggleTodo(task) {
+      if(this.isFetchingFromDb) {
+        return;
+      }
+
+      this.updateTodo(task, {
+        id: task.id,
+        description: task.description,
+        status_id: task.status_id == 1 ? 2 : 1
+      });
     },
     editTodo(task, newTaskDescription) {
-      task.description = newTaskDescription;
+      if(this.isFetchingFromDb || task.description === newTaskDescription) {
+        return;
+      }
+
+      this.updateTodo(task, {
+        id: task.id,
+        description: newTaskDescription,
+        status_id: task.status_id
+      });
+    },
+    updateTodo(task, newData) {
+      this.isFetchingFromDb = true;
+
+      this.currentDescription = task.description;
+      this.currentStatusId = task.status_id;
+
+      task.description = newData.description;
+      task.status_id = newData.status_id;
+
+      axios
+        .patch('/api/v1/tasks/tasks/'+task.id, newData)
+        .then(response => {
+          let data = response.data.data;
+
+          task.description = data.description;
+          task.status_id = data.status_id;
+          task.status = data.status;
+
+          this.isFetchingFromDb = false;
+
+          this.createSuccessToast(
+            this.$t("tasks.todo_update_success"),
+            this.$t("success")
+          );
+
+        }).catch(error => {
+          this.isFetchingFromDb = false;
+          task.description = this.currentDescription;
+          task.status_id = this.currentStatusId;
+
+          this.createErrorToast(
+            this.formatErrors(error),
+            this.$t("warning")
+          );
+        });
     },
     updateUserTasks(data) {
-      console.log(data);
       this.tasks = data.result;
-      // this.isFetchingFromDb = true;
-      // axios
-      //   .get('/api/v1/tasks/get-user-tasks')
-      //   .then(response => {
-      //     let data = response.data.data;
-      //     console.log(data);
-      //     this.tasks = data.result;
-      //     this.allResultsCount = data.meta.total;
-      //     // this.property_type
-      //     this.isFetchingFromDb = false;
-
-      //   }).catch(error => {
-      //     this.isFetchingFromDb = false;
-      //   });
     }
   }
 

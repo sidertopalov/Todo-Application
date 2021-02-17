@@ -1,12 +1,16 @@
 <template>
-  <form @submit.prevent="addTodo()">
-    <input
+  <b-form @submit.prevent="addTodo()">
+    <b-form-input
+      id="description"
       v-model="form.description"
       type="text"
       class="form-control"
-      placeholder="Create a new to-do..."
+      required
+      :placeholder="$t('tasks.create_todo_text')"
+      :class="{ 'is-invalid': form.errors.has('description') }"
     />
-  </form>
+    <has-error :form="form" field="description" />
+  </b-form>
 </template>
 
 <script>
@@ -25,11 +29,10 @@ export default {
       this.form
         .post('/api/v1/tasks/tasks')
         .then(response => {
-          console.log(response);
           this.$emit("on-new-todo", response.data.data);
           this.form.description = "";
         }).catch(error => {
-          console.log(error);
+          this.handleErrors(error);
         });
     }
   }

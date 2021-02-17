@@ -49,6 +49,9 @@
   "failed_to_verify_email": "Failed to verify email.",
   "verify_email_address": "We sent you an email with an the verification link.",
   "actions": "Actions",
+  "warning": "Warning",
+  "delete": "Delete",
+  "save": "Save",
   "profile": {
     "profile": "Profile",
     "update": "Update",
@@ -56,6 +59,15 @@
   },
   "tasks": {
     "create_todo_text": "Create a new todo..",
-    "todo_list": "Todo Lists"
+    "todo_list": "Todo Lists",
+    "todo_delete_failed": "Delete todo failed. Please try again!",
+    "todo_delete_success": "The Todo was successfully deleted!",
+    "delete_text": "Are you sure?",
+    "todo_update_success": "The Todo was successfully updated!",
+    "todo_update_failed": "The Todo updated failed. Please try again!",
+    "tooltips": {
+      "edit": "Edit todo.",
+      "delete": "Delete todo."
+    }
   }
 }

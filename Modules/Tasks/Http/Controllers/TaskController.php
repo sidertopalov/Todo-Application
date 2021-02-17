@@ -50,4 +50,26 @@ class TaskController extends Controller
 
         return $data->response()->setStatusCode($statusCode);
     }
+
+    public function update(Request $request, $taskId)
+    {
+        $statusCode = 200;
+        $data = $this->taskService->update($taskId, $request->all());
+        if (!empty($data->code)) {
+            $statusCode = $data->code;
+        }
+
+        return $data->response()->setStatusCode($statusCode);
+    }
+
+    public function destroy($taskId)
+    {
+        $statusCode = 200;
+        $data = $this->taskService->delete($taskId);
+        if (!empty($data->code)) {
+            $statusCode = $data->code;
+        }
+
+        return $data->response()->setStatusCode($statusCode);
+    }
 }

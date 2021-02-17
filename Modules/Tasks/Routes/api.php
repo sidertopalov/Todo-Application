@@ -20,5 +20,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('get-user-tasks', [TaskController::class, 'getUserTasks']);
     Route::get('tasks/{id}', [TaskController::class, 'edit']);
     Route::patch('tasks/{id}', [TaskController::class, 'update']);
+    Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 });
 

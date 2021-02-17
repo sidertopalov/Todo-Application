@@ -10,7 +10,7 @@ Vue.mixin({
         solid: true,
         static: true,
         appendToast: false,
-        autoHideDelay: 3000
+        autoHideDelay: 2000
       })
     },
     createErrorToast: function (message, title) {
@@ -22,33 +22,6 @@ Vue.mixin({
         static: true,
         appendToast: false,
         noAutoHide: true
-      })
-    },
-    redirectWithSuccessToastMessage: function (route, message, title) {
-      let vm = this
-      this.$router.push({ name: route }, () => {
-        setTimeout(() => {
-          vm.createSuccessToast(message, title)
-        }, 1000)
-      })
-    },
-    redirectWithSuccessToastMessageToRouteWithParam: function (route, message, title, paramId) {
-      let vm = this
-      this.$router.push({
-        name: route,
-        params: { id: paramId }
-      }, () => {
-        setTimeout(() => {
-          vm.createSuccessToast(message, title)
-        }, 1000)
-      })
-    },
-    redirectWithErrorToastMessage: function (route, message, title) {
-      let vm = this
-      this.$router.push({ name: route }, () => {
-        setTimeout(() => {
-          vm.createErrorToast(message, title)
-        }, 1000)
       })
     }
   }

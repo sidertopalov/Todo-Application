@@ -15,4 +15,6 @@ abstract class TaskRepositoryContract
     abstract function getSortableColumns();
     abstract function getUserTasksAll(array $requestData);
     abstract function getUserTasksAllCount(array $requestData);
+    abstract function update(int $taskId, array $requestData);
+    abstract function delete(int $taskId);
 }
