@@ -15,11 +15,4 @@ abstract class TaskRepositoryContract
     abstract function getSortableColumns();
     abstract function getUserTasksAll(array $requestData);
     abstract function getUserTasksAllCount(array $requestData);
-
-    // abstract function getLoggedInUser(int $id);
-    // abstract function createLocalLdap(array $data);
-    // abstract function getDetails(int $id);
-    // abstract function update(int $id, array $data);
-    // abstract function updateLdapUser(int $id, array $data);
-    // abstract function delete(int $id);
 }

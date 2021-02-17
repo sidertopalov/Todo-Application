@@ -16,8 +16,8 @@ use Modules\Tasks\Http\Controllers\TaskController;
 
 Route::group(['middleware' => ['auth:api']], function () {
 
-    Route::get('getUserTasks', [TaskController::class, 'getUserTasks']);
     Route::post('tasks', [TaskController::class, 'create']);
+    Route::get('get-user-tasks', [TaskController::class, 'getUserTasks']);
     Route::get('tasks/{id}', [TaskController::class, 'edit']);
     Route::patch('tasks/{id}', [TaskController::class, 'update']);
 });

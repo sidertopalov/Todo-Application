@@ -25,9 +25,7 @@ let routes = [
   },
 
   // Tasks
-  { path: '/tasks', name: 'tasks.index', component: page('tasks/index') },
-  { path: '/tasks/create', name: 'tasks.create', component: page('tasks/create') },
-  { path: '/tasks/:id/edit', name: 'tasks.edit', component: page('tasks/edit') },
+  { path: '/tasks', name: 'tasks.index', component: page('tasks/index') }
 
 ];
 

@@ -35,6 +35,16 @@ html {
 }
 
 // margin
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mtb-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .mt-50 {
   margin-top: 50px;
@@ -43,8 +53,13 @@ html {
 .mb-70 {
   margin-bottom: 70px;
 }
-
+.border-0 {
+  border: 0px;
+}
 // padding
+.pr-5 {
+  padding-right: 5px;
+}
 .pt-20 {
   padding-top: 20px;
 }
@@ -64,6 +79,10 @@ html {
   color: $white;
 }
 
+.bg-inherit {
+  background-color: inherit !important;
+}
+
 .text-align-left {
   text-align: left;
 }
@@ -77,6 +96,9 @@ html {
   font-size: larger;
 }
 
+.br-5 {
+  border-radius: 5px;
+}
 
 .bg-primary {
   background-color: $primary !important;

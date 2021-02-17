@@ -17,7 +17,10 @@ import {
   faUserPlus,
   faClipboardCheck,
   faClipboardList,
-  faPlusCircle
+  faPlusCircle,
+  faEdit,
+  faTrash,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -37,7 +40,10 @@ library.add(
   faUserPlus,
   faClipboardCheck,
   faClipboardList,
-  faPlusCircle
+  faPlusCircle,
+  faEdit,
+  faTrash,
+  faTrashAlt
 )
 
 Vue.component('fa', FontAwesomeIcon)

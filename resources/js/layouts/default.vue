@@ -2,12 +2,12 @@
   <div class="main-layout">
 
     <div>
-      <b-nav class="app-navigator box-shadow justify-content-between">
+      <b-nav class="app-navigator box-shadow justify-content-between" v-if="authenticated">
         <b-nav-item @click="toggleSidebar(true)">
           <fa class="show-mobile fa-2x sidebar-icon py-2" icon="bars"  />
         </b-nav-item>
 
-        <b-nav-item v-if="authenticated">
+        <b-nav-item>
           	{{ $t("hello_with_comma") }} {{ user.name }}
         </b-nav-item>
 

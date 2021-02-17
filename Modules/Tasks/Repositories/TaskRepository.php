@@ -14,6 +14,8 @@ class TaskRepository extends TaskRepositoryContract
         $query = Task::query();
         $this->applyUserWheres($query, $requestData);
         $this->setPaging($query, $requestData['limit'], $requestData['offset']);
+        $this->setOrder($query, 'created_at', 'desc', $this->getSortableColumns());
+        // $this->setOrder($query, $requestData['sortField'], $requestData['sortDirection'], $this->getSortableColumns());
 
         return $query
             ->with('status')
@@ -24,14 +26,14 @@ class TaskRepository extends TaskRepositoryContract
     {
         $query = Task::query();
         $this->applyUserWheres($query, $requestData);
-        $this->setPaging($query, $requestData['limit'], $requestData['offset']);
 
         return $query->count();
     }
 
     public function create(array $data)
     {
-        return Task::create($data);
+        $task = Task::create($data);
+        return Task::with('status')->find($task->id);
     }
 
     public function rules(array $merge = [], $id = null)

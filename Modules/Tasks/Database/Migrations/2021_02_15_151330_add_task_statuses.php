@@ -31,8 +31,6 @@ class AddTaskStatuses extends Migration
      */
     public function down()
     {
-        Schema::table('task_statuses', function (Blueprint $table) {
-
-        });
+        Schema::dropIfExists('task_statuses');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $fillable = [
-        'name',
+        'description',
         'user_id',
         'status_id'
     ];
@@ -24,7 +24,7 @@ class Task extends Model
 
     public static function rules($merge = [], $id = null) {
         return array_merge([
-            'name' => 'required',
+            'description' => 'required',
             'user_id' => 'required|exists:users,id',
             'status_id' => 'optional|exists:task_statuses,id',
         ], $merge);

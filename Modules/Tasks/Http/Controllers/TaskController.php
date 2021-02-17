@@ -40,10 +40,6 @@ class TaskController extends Controller
         return $dataResponse->response()->setStatusCode($statusCode);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create(Request $request)
     {
         $statusCode = 201;

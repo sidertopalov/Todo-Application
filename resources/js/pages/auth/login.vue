@@ -1,17 +1,7 @@
 <template>
   <div class="main-wrapper h-100 mw-100">
-     <div class="row">
-      <router-link :to="{ name: 'welcome' }" class="w-100 pt-20">
-        <v-button>
-          <fa icon="home" />
-          <span class="sidebar-text">{{ $t("go_home") }}</span>
-        </v-button>
-      </router-link>
-    </div>
-
     <div class="row h-100">
-
-      <div class="col-lg-8 m-auto d-flex justify-content-center align-items-center flex-column h-100">
+      <div class="col-lg-8 m-auto d-flex justify-content-center align-items-center flex-column h-100 br-5">
         <div class="row">
             <b-card
               border-variant="primary"
@@ -42,15 +32,6 @@
                     </div>
                   </div>
 
-                  <!-- Remember Me -->
-                  <div class="form-group row w-100">
-                    <div class="col-md-6 d-flex p-0">
-                      <router-link :to="{ name: 'password.request' }" class="small">
-                        {{ $t('forgot_password') }}
-                      </router-link>
-                    </div>
-                  </div>
-
                   <!-- Login Button -->
                   <div class="form-group row w-100">
                     <div class="col-sm-7 d-flex p-0">
@@ -58,6 +39,12 @@
                         <fa icon="sign-in-alt" />
                         {{ $t('login') }}
                       </v-button>
+                    </div>
+
+                    <div class="col justify-content-end d-flex p-0">
+                      <router-link :to="{ name: 'welcome' }" class="small">
+                        {{ $t('go_home') }}
+                      </router-link>
                     </div>
                   </div>
                 </form>
